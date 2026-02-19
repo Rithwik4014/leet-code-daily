@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    int isHappy(int N) {
+        // code here
+        unordered_set<int> happy;
+        while(N != 1 && happy.count(N) == 0) {
+            happy.insert(N);
+            int sum = 0;
+            while(N > 0) {
+                int digit  = N % 10;
+                sum += digit * digit;
+                N /= 10;
+            }
+            N = sum;
+        }
+        if(N == 1) {
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+};
